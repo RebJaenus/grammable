@@ -13,6 +13,12 @@ class GramsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+  def show
+    @gram = Gram.find_by_id(params[:id])
+    if @gram.blank?
+      render plain: 'Not Found :(', status: :not_found
+    end
+  end
 
   private 
 
